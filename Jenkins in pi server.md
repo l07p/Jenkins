@@ -1,4 +1,7 @@
 # Setup Jenkins master on pi
+## Instance Configuration
+Jenkins URL: | http://192.168.178.54:8080/
+
 ## Install Jenkins
 Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de
 **Steps**
