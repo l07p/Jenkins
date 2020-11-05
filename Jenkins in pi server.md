@@ -3,3 +3,8 @@
 Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de
 **Steps**
 - [ ] install jenkins to pi by referring to last link
+
+
+```properties
+npm run build
+``` 
