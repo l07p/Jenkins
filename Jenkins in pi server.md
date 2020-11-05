@@ -25,4 +25,14 @@ then
 ```properties
 sudo systemctl start jenkins
 sudo systemctl status jenkins
+sudo ufw allow 8080
+sudo ufw status
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+6ff9e649de834a73bc9dc0da91318a3b
 ```
+## Create first Admin User
+Column | input
+------ | -----
+Username | pi
+Password | über500
+Email | net.support@xiang-liang.de
