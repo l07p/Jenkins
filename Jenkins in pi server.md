@@ -21,3 +21,8 @@ then
 ```properties
 sudo apt install jenkins
 ```
+then
+```properties
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+```
