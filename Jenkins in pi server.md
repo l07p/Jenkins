@@ -17,3 +17,7 @@ then
 ```properties
 sudo apt update
 ```
+then
+```properties
+sudo apt install jenkins
+```
