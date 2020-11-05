@@ -6,5 +6,10 @@ Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins
 
 
 ```properties
-npm run build
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 ``` 
+OK as result
+
+```properties
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+```
