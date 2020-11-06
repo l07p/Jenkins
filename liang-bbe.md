@@ -14,3 +14,10 @@ OpenJDK JDK / JRE 11 - 64 bits
 ## download 
 msi https://www.jenkins.io/download/thank-you-downloading-windows-installer/
 get jenkins.msi
+
+## Create first Admin User
+Column | input
+------ | -----
+Username | repi
+Password | über500
+Email | net.support@xiang-liang.de
