@@ -40,3 +40,10 @@ Column | input
 Username | pi
 Password | über500
 Email | net.support@xiang-liang.de
+
+## add python plugins
+plugins | usage
+------- | -----
+Python | ability to execute python
+ShiningPanda | ?
+Pyenv Pipeline | ?
