@@ -42,6 +42,7 @@ Password | über500
 Email | net.support@xiang-liang.de
 
 ## add python plugins
+Configuration Jenkins > Global Tool Configuration
 plugins | usage
 ------- | -----
 Python | ability to execute python
