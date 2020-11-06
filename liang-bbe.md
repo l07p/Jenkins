@@ -8,3 +8,5 @@ Refer to https://www.jenkins.io/doc/book/installing/windows/
 **Steps**
 - [ ] install jenkins to bbe by referring to last link
 
+## Java requirement
+OpenJDK JDK / JRE 11 - 64 bits
