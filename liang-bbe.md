@@ -15,9 +15,14 @@ OpenJDK JDK / JRE 11 - 64 bits
 msi https://www.jenkins.io/download/thank-you-downloading-windows-installer/
 get jenkins.msi
 
+Logon type | local service even not recommanded
+---------- | ---------------------------------- 
+
 ## Create first Admin User
 Column | input
 ------ | -----
 Username | repi
 Password | über500
 Email | net.support@xiang-liang.de
+
+
