@@ -10,6 +10,7 @@ Refer to https://www.jenkins.io/doc/book/installing/windows/
 
 ## Java requirement
 OpenJDK JDK / JRE 11 - 64 bits
+must be here https://www.oracle.com/java/technologies/javase-downloads.html
 
 ## download 
 msi https://www.jenkins.io/download/thank-you-downloading-windows-installer/
