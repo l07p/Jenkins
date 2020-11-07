@@ -1,6 +1,6 @@
 # Setup Jenkins master on pi
 # Table of contents
-1. [Instance Configuration](#Instance Configuration)
+1. [Instance Configuration](#Instance_Configuration)
 2. [Some paragraph](#paragraph1)
     1. [Sub paragraph](#subparagraph1)
 3. [Another paragraph](#paragraph2)
@@ -15,7 +15,7 @@ This is a sub paragraph, formatted in heading 3 style
 The second paragraph text
 ========================================
 
-## Instance Configuration <a name="Instance Configurationn"></a>
+## Instance Configuration <a name="Instance_Configurationn"></a>
 Jenkins URL: | http://192.168.178.54:8080/
 ------------ | ---------------------------
 password | in /var/log/jenkins/jenkins.log
