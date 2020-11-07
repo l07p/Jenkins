@@ -1,7 +1,24 @@
 # Setup Jenkins master on pi
-## Instance Configuration
+# Table of contents
+1. [Instance Configuration](#Instance Configuration)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
+
+## Some paragraph <a name="paragraph1"></a>
+The first paragraph text
+
+### Sub paragraph <a name="subparagraph1"></a>
+This is a sub paragraph, formatted in heading 3 style
+
+## Another paragraph <a name="paragraph2"></a>
+The second paragraph text
+========================================
+
+## Instance Configuration <a name="Instance Configurationn"></a>
 Jenkins URL: | http://192.168.178.54:8080/
 ------------ | ---------------------------
+password | in /var/log/jenkins/jenkins.log
 
 ## Install Jenkins
 Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de
