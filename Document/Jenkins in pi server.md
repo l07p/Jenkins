@@ -19,7 +19,6 @@ The second paragraph text
 Jenkins URL: | http://192.168.178.54:8080/
 ------------ | ---------------------------
 password | in /var/log/jenkins/jenkins.log
------------- | ---------------------------
 working space | 	/var/lib/jenkins
 
 ## Install Jenkins
