@@ -21,7 +21,7 @@ Jenkins URL: | http://192.168.178.54:8080/
 password | in /var/log/jenkins/jenkins.log
 
 ## Install Jenkins
-Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de
+Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de or https://tecadmin.net/how-to-install-jenkins-on-ubuntu-20-04/
 **Steps**
 - [ ] install jenkins to pi by referring to last link
 
