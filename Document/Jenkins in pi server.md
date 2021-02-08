@@ -19,6 +19,8 @@ The second paragraph text
 Jenkins URL: | http://192.168.178.54:8080/
 ------------ | ---------------------------
 password | in /var/log/jenkins/jenkins.log
+------------ | ---------------------------
+working space | 	/var/lib/jenkins
 
 ## Install Jenkins
 Refer to https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-de or https://tecadmin.net/how-to-install-jenkins-on-ubuntu-20-04/
