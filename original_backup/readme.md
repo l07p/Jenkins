@@ -5,4 +5,5 @@ configuation files and jobs are saved here
 Easiest way that worked for me:
 
 cp --parents -R jobs/**/*.xml ./backup/
+
 one catch is you have to navigate to the "desi
