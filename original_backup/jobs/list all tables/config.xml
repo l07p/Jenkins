@@ -1,0 +1,38 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>list all tables in database</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/home/project/Projects/pi_server/</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+tables=( &apos;products&apos; &apos;product_values&apos; &apos;product_categories&apos; &apos;profits&apos; &apos;accounts&apos; &apos;account_balances&apos; &apos;account_types&apos;  &apos;banks&apos; &apos;orders&apos; )
+for i in &quot;${tables[@]}&quot;
+  do
+    echo &quot;++++++ table $i &quot;
+    PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from $i&quot;
+  done
+
+
+
+</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,91 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Input csv file, update google sheets</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.FileParameterDefinition>
+          <name>file.csv</name>
+          <description></description>
+        </hudson.model.FileParameterDefinition>
+        <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.5.1">
+          <name>Account</name>
+          <description>account name as in database</description>
+          <randomName>choice-parameter-200767397274530</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.75">
+              <script>return [&quot;DKB_depot&quot;,
+&quot;comdirect_depot&quot;,
+&quot;consors_depot&quot;,
+&quot;targo_depot&quot;,
+&quot;DKB_giro&quot;,
+&quot;DKB_tages&quot;,
+&quot;comdirect_giro&quot;,
+&quot;comdirect_verrechnung&quot;,
+&quot;consors_fest&quot;,
+&quot;consors_giro&quot;,
+&quot;consors_tages&quot;,
+&quot;consors_verrechnung&quot;,
+&quot;equateplus&quot;,
+&quot;ikb_usd&quot;,
+&quot;targo_fest&quot;,
+&quot;targo_giro&quot;,
+&quot;targo_hoch_zins&quot;,
+&quot;targo_tages&quot;  ]</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.75">
+              <script></script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>read csv to sheets</projectName>
+          <projectFullName>read csv to sheets</projectFullName>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.ChoiceParameter>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.5.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/l07p/pi_server.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+python3 ./database/investment/scripts/python/read_csv.py --filepath file.csv --account $Account
+
+</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
