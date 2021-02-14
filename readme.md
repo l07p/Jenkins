@@ -12,6 +12,7 @@ first of all, install pip. Install it as root, it works for all other users incl
 |---------|------|
 | see follows | - |
 
+``python3 -m pip install psycopg2``
 
 ``python3 -m pip install gspread oauth2client``
 
