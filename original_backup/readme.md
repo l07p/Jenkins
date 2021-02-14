@@ -9,5 +9,6 @@ setup plugin thinbackup
 ## restore
 
 mkdir /var/lib/jenkins/backups
-cp -R /media/lnmycloud/backups/jenkins/FULL** /var/lib/jenkins/backups/
+
+sudo cp -R /media/lnmycloud/backups/jenkins/FULL** /var/lib/jenkins/backups/
 
