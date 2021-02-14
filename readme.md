@@ -6,6 +6,7 @@
 |---------|------|
 | see follows | - |
 
+<code>
 ####################### install mail-parser
 #python3 -V
 #python3 -m pip install gspread oauth2client
@@ -25,3 +26,4 @@
 ####################### install pandas
 # python3 -V
 # python3 -m pip install pandas
+<\code>
