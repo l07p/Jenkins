@@ -1,14 +1,12 @@
 # Original Backup
 configuation files and jobs are saved here
 
-## Commands of Shell
-Easiest way that worked for me:
+## plugins for backup
+setup plugin thinbackup
 
-cp --parents -R jobs/**/*.xml ./backup/
+## backup
 
-one catch is you have to navigate to the "desi
+## restore
 
-## example
 
-root@ubuntu:/var/lib/jenkins# cp --parents -R jobs/**/*.xml /home/project/Projects/Jenkins/original_backup/
 
