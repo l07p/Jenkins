@@ -7,6 +7,7 @@ setup plugin thinbackup
 ## backup
 
 ## restore
+must be restarted after restore
 
 mkdir /var/lib/jenkins/backups
 
