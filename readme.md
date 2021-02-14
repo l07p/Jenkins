@@ -4,6 +4,9 @@
 
 first of all, install pip
 
+``sudo apt update``
+
+``sudo apt install python3-pip``
 
 | plugins | note |
 |---------|------|
