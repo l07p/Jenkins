@@ -2,7 +2,7 @@
 
 ## python
 
-first of all, install pip
+first of all, install pip. Install it as root, it works for all other users include jenkins
 
 ``sudo apt update``
 
