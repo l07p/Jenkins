@@ -6,24 +6,14 @@
 |---------|------|
 | see follows | - |
 
-<code>
-####################### install mail-parser
-#python3 -V
-#python3 -m pip install gspread oauth2client
 
-####################### install mail-parser
-#python3 -V
-#python3 -m pip install mail-parser
+``python3 -m pip install gspread oauth2client``
 
-####################### install pdfminer
-# python3 -V
-# python3 -m pip install pdfminer
+``python3 -m pip install mail-parser``
 
-####################### install pdfminer.six
-# python3 -V
-# python3 -m pip install pdfminer.six
+``python3 -m pip install pdfminer``
 
-####################### install pandas
-# python3 -V
-# python3 -m pip install pandas
-<\code>
+``python3 -m pip install pdfminer.six``
+
+``python3 -m pip install pandas``
+
