@@ -20,3 +20,8 @@ To restart Jenkins manually, you can use either of the following commands (by en
 (jenkins_url)/safeRestart - Allows all running jobs to complete. New jobs will remain in the queue to run after the restart is complete.
 
 (jenkins_url)/restart - Forces a restart without waiting for builds to complete.
+
+## Problems
+
+git config -globle user
+git config -globle password
