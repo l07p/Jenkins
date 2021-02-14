@@ -24,3 +24,12 @@ first of all, install pip. Install it as root, it works for all other users incl
 
 ``python3 -m pip install pandas``
 
+### problems
+
+sudo apt-get update
+
+sudo apt-get install libpq-dev python3.8-dev
+
+pipenv install --python=3.8 psycopg2
+
+pipenv shell
