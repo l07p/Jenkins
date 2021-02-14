@@ -2,6 +2,9 @@
 
 ## python
 
+first of all, install pip
+
+
 | plugins | note |
 |---------|------|
 | see follows | - |
