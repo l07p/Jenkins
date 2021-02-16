@@ -1,5 +1,9 @@
 # Settings
 
+## using google sheets
+
+where is SheetsPython-ea71b57285ec.json
+
 ## python
 
 first of all, install pip. Install it as root, it works for all other users include jenkins
