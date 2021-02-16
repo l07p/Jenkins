@@ -1,8 +1,12 @@
 # Settings
 
-## using google sheets
+## to github
 
-where is SheetsPython-ea71b57285ec.json
+https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project
+
+it is necessary to trigger gitscm:
+
+Jenkins - new item - configure - build triggers - githubb hool 
 
 ## python
 
