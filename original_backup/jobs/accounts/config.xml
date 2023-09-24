@@ -1,0 +1,55 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+echo &quot;+++++++++++++++++ account list +++++++++++++++&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from accounts ORDER BY name;&quot;
+echo &quot;++++++ table accounts and balances:&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from view_accounts_balances;&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select SUM(balance) from view_accounts_balances;&quot;
+</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+echo &quot;++++++ balances of types+++++++++++++++++++++++++++++++++++++++++++++++++:&quot;
+echo &quot;depot ==================:&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from view_accounts_balances where type = &apos;depot&apos;&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select SUM(balance) from view_accounts_balances where type = &apos;depot&apos;&quot;
+echo &quot;depot ==================:&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from view_accounts_balances where type = &apos;giro&apos;&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select SUM(balance) from view_accounts_balances where type = &apos;giro&apos;&quot;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+echo &quot;++++++ balances of banks+++++++++++++++++++++++++++++++++++++++++++++++++:&quot;
+echo &quot;dbk ==================:&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from view_accounts_balances where bank = &apos;dbk&apos;&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select SUM(balance) from view_accounts_balances where bank = &apos;dbk&apos;&quot;
+echo &quot;depot ==================:&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select * from view_accounts_balances where bank = &apos;targo&apos;&quot;
+PGPASSWORD=ueber500mal psql -U pi -d investment -h &quot;192.168.178.54&quot; -c &quot;select SUM(balance) from view_accounts_balances where bank = &apos;targo&apos;&quot;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

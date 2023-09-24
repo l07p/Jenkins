@@ -1,0 +1,74 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+echo $JENKINS_HOME
+ls -la
+
+echo &quot;+++++++++++ install components -------------------&quot;
+
+####################### install mail-parser
+#python3 -V
+#python3 -m pip install gspread oauth2client
+
+####################### install mail-parser
+#python3 -V
+#python3 -m pip install mail-parser
+
+####################### install pdfminer
+# python3 -V
+# python3 -m pip install pdfminer
+
+####################### install pdfminer.six
+# python3 -V
+# python3 -m pip install pdfminer.six
+
+####################### install pandas
+# python3 -V
+# python3 -m pip install pandas
+</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+#python3 /home/project/Projects/pi_server/database/investment/scripts/python/product.py</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/python3.8
+#import psycopg2
+#import pandas
+#print(&apos;imported installed module&apos;)</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#echo Retrieving some GitVersion environment variables:
+#echo %GitVersion_SemVer%
+#echo %GitVersion_BranchName%
+#echo %GitVersion_AssemblySemVer%
+#echo %GitVersion_MajorMinorPatch%
+#echo %GitVersion_Sha%</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
