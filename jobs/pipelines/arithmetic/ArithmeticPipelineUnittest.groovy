@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Load the external Groovy script
-                    def arithmeticScript = load 'https://raw.githubusercontent.com/mygithub/subdirectory/pipelinedirectory/ArithmeticPipeline.groovy'
+                    def arithmeticScript = load 'https://github.com/l07p/Jenkins/blob/master/jobs/pipelines/arithmetic/ArithmeticPipeline.groovy'
                 }
             }
         }
