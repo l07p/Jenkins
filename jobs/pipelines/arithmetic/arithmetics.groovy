@@ -35,6 +35,13 @@ pipeline {
                     // Call the arithmetic function defined outside
                     def result = arithmeticPipeline(params.OPERATION, params.NUM1, params.NUM2)
                     echo "Result: ${result}"
+
+                    // Create a JUnit report file
+                    def junitReport = "<testsuite name='ArithmeticTests'><testcase name='Calculation'><failure message='Result: ${result}'/></testcase></testsuite>"
+                    writeFile file: 'test-results.xml', text: junitReport
+
+                    // Publish JUnit test results
+                    junit 'test-results.xml'
                 }
             }
         }
