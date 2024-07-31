@@ -36,8 +36,21 @@ pipeline {
                     def result = arithmeticPipeline(params.OPERATION, params.NUM1, params.NUM2)
                     echo "Result: ${result}"
 
+                    // Define the expected result for the test
+                    def expectedResult = 5
+                    def testPassed = (result == expectedResult)
+
                     // Create a JUnit report file
-                    def junitReport = "<testsuite name='ArithmeticTests'><testcase name='Calculation'><failure message='Result: ${result}'/></testcase></testsuite>"
+                    def junitReport = """
+                    <testsuite name='ArithmeticTests'>
+                        <testcase name='Addition Test'>
+                            ${testPassed ? "" : "<failure message='Expected ${expectedResult} but got ${result}'/>"}
+                            <system-out>
+                                <![CDATA[ Result: ${result} ]]>
+                            </system-out>
+                        </testcase>
+                    </testsuite>
+                    """
                     writeFile file: 'test-results.xml', text: junitReport
 
                     // Publish JUnit test results
