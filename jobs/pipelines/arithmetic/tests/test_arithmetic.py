@@ -1,6 +1,11 @@
 import unittest
-from src.arithmetic import add, subtract, multiply, divide
+import sys
+import os
 
+# Adjust the path to include the 'src' directory
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from arithmetic import add, subtract, multiply, divide
 class TestArithmetic(unittest.TestCase):
     def test_add(self):
         self.assertEqual(add(2, 3), 5)
