@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/yourusername/your-repository.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Optionally install dependencies if any
+                //sh 'pip install -r requirements.txt'
+                echo 'Skipping dependency installation as no requirements are specified'
+            }
+        }
+
+        stage('Run Python Tests') {
+            steps {
+                sh 'python -m unittest discover -s tests'
+            }
+        }
+
+        stage('Post Actions') {
+            steps {
+                echo 'Pipeline completed'
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
