@@ -18,7 +18,7 @@ pipeline {
                     def testFile = params.TEST_FILE
                     echo "Running tests from file: ${testFile}"
                     // Assuming you have a Python environment set up and accessible
-                    sh "python -m unittest ${testFile}"
+                    sh "python3 -m unittest ${testFile}"
                 }
             }
         }
