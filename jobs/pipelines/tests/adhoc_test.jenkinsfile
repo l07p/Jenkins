@@ -14,25 +14,32 @@ pipeline {
         
         stage('Run Tests') {
             steps {
-                // Set up Python virtual environment
-                sh '''
-                    python3 -m venv venv
-                    source venv/bin/activate
-                '''
-                
-                // Run the tests using `unittest`
-                sh '''
-                    source venv/bin/activate
-                    python3 -m unittest ${params.TEST_FILE}
-                '''
+                script {
+                    def testFile = params.TEST_FILE
+                    echo "Running tests from file: ${testFile}"
+                    // Assuming you have a Python environment set up and accessible
+                    sh "python3 -m unittest ${testFile}"
+                }
+            }
+        }
+        
+        stage('Save Test Results') {
+            steps {
+                script {
+                    def testFile = params.TEST_FILE
+                    echo "Saving test results for file: ${testFile}"
+                    // Assuming test results are saved in a file named 'test-results.xml'
+                    junit 'test-results.xml'
+                }
             }
         }
     }
     
     post {
         always {
-            // Clean up the virtual environment
-            sh 'rm -rf venv'
+            echo 'Cleaning up...'
+            // Clean up workspace if needed
+            cleanWs()
         }
     }
 }
