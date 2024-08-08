@@ -14,23 +14,20 @@ pipeline {
         
         stage('Run Tests') {
             steps {
-                script {
-                    def testFile = params.TEST_FILE
-                    echo "Running tests from file: ${testFile}"
-                    // Assuming you have a Python environment set up and accessible
-                    sh "python3 -m unittest ${testFile}"
-                }
-            }
-        }
-        
-        stage('Save Test Results') {
-            steps {
-                script {
-                    def testFile = params.TEST_FILE
-                    echo "Saving test results for file: ${testFile}"
-                    // Assuming test results are saved in a file named 'test-results.xml'
-                    junit 'test-results.xml'
-                }
+                // Set up Python virtual environment and install dependencies
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                '''
+                
+                // Run the tests and generate JUnit XML report
+                sh '''
+                    . venv/bin/activate
+                    pytest --junitxml=test-results.xml ${params.TEST_FILE}
+                '''
+                
+                // Archive the test results
+                junit 'test-results.xml'
             }
         }
     }
