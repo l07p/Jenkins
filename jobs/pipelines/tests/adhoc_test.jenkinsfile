@@ -2,15 +2,21 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'TEST_FILE', defaultValue: 'arithmetic_test.py', description: 'The name of the test file to run')
+        string(name: 'TEST_FILE', defaultValue: 'jobs/pipelines/arithmetic/tests/test_arithmetic.py', description: 'The name of the test file to run')
     }
     
     stages {
+        
         stage('Setup Python Environment') {
             steps {
                 script {
-                    // Activate the virtual environment
-                    sh ". venv/bin/activate && pip install pytest"
+                    // Check if the virtual environment exists, if not create it
+                    sh """
+                        if [ ! -d "venv" ]; then
+                            python3 -m venv venv
+                        fi
+                        . venv/bin/activate && pip install pytest
+                    """
                 }
             }
         }
