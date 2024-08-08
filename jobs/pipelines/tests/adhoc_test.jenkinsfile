@@ -12,7 +12,8 @@ pipeline {
                 script {
                     echo "Running tests from file: ${TEST_FILE}"
                     // Assuming you have a Python environment set up and accessible
-                    sh "python3 -m unittest ${TEST_FILE}"
+                    // sh "python3 -m unittest ${TEST_FILE}"
+                    sh "pytest --junitxml=test-results.xml ${TEST_FILE}"
                 }
             }
         }
