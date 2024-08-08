@@ -6,14 +6,22 @@ pipeline {
     }
     
     stages {
-
+        stage('Setup Python Environment') {
+            steps {
+                script {
+                    // Activate the virtual environment
+                    sh ". venv/bin/activate && pip install pytest"
+                }
+            }
+        }
+        
         stage('Run Tests') {
             steps {
                 script {
                     echo "Running tests from file: ${TEST_FILE}"
-                    // Assuming you have a Python environment set up and accessible
-                    // sh "python3 -m unittest ${TEST_FILE}"
-                    sh "pytest --junitxml=test-results.xml ${TEST_FILE}"
+                    
+                    // Run tests using pytest and generate an XML report
+                    sh ". venv/bin/activate && pytest --junitxml=test-results.xml ${TEST_FILE}"
                 }
             }
         }
@@ -22,7 +30,6 @@ pipeline {
             steps {
                 script {
                     echo "Saving test results for file: ${TEST_FILE}"
-                    // Assuming test results are saved in a file named 'test-results.xml'
                     junit 'test-results.xml'
                 }
             }
@@ -32,7 +39,6 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            // Clean up workspace if needed
             cleanWs()
         }
     }
