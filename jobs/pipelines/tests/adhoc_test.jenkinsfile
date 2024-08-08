@@ -31,9 +31,8 @@ pipeline {
     
     post {
         always {
-            echo 'Cleaning up...'
-            // Clean up workspace if needed
-            cleanWs()
+            // Clean up the virtual environment
+            sh 'rm -rf venv'
         }
     }
 }
