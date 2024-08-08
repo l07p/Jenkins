@@ -14,12 +14,7 @@ pipeline {
         
         stage('Run Tests') {
             steps {
-                // Set up Python virtual environment and install dependencies
-                sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
-                '''
-                
+               
                 // Run the tests and generate JUnit XML report
                 sh '''
                     . venv/bin/activate
