@@ -40,6 +40,7 @@ def insert_bank_data(bank_name, bank_code):
         
     finally:
         # Close the cursor and connection
+        print('close connection to database')
         cur.close()
         conn.close()
 

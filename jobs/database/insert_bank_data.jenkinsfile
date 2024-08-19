@@ -12,6 +12,7 @@ pipeline {
                 git url: 'https://github.com/l07p/jenkins.git', branch: 'master'
             }
         }
+
         stage('Check Workspace') {
             steps {
                 script {
@@ -21,13 +22,26 @@ pipeline {
                 }
             }
         }
+
+        stage('Debug Parameters') {
+            steps {
+                script {
+                    // Print the parameters for debugging
+                    sh """
+                        echo "Bank Name: '${bank_name}'"
+                        echo "Bank Code: '${bank_code}'"
+                    """
+                }
+            }
+        }
+
         stage('Run Python Script') {
             steps {
                 script {
                     // Run the Python script with the parameters
                     sh """
                         . ${VENV_PATH}activate && \
-                        python3 jobs/database/insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
+                        python3 jobs/database/insert_bank_data.py --bank_name='${bank_name.replace("'", "\\'")}' --bank_code='${bank_code.replace("'", "\\'")}'
                     """
                 }
             }
