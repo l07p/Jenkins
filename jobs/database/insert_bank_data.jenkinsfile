@@ -12,14 +12,22 @@ pipeline {
                 git url: 'https://github.com/l07p/jenkins.git', branch: 'master'
             }
         }
-
+        stage('Check Workspace') {
+            steps {
+                script {
+                    // Print the current directory and list the files
+                    sh "pwd"
+                    sh "ls -la"
+                }
+            }
+        }
         stage('Run Python Script') {
             steps {
                 script {
                     // Run the Python script with the parameters
                     sh """
-                    source ${VENV_PATH}activate
-                    python3 insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
+                        . ${VENV_PATH}activate && \
+                        python3 jobs/database/insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
                     """
                 }
             }
@@ -28,6 +36,7 @@ pipeline {
 
     post {
         always {
+            echo 'Cleaning up at finishing...'
             cleanWs()  // Clean up workspace after job is done
         }
     }
