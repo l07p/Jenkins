@@ -18,7 +18,7 @@ pipeline {
                 script {
                     // Run the Python script with the parameters
                     sh """
-                        source ${VENV_PATH}activate && \
+                        . ${VENV_PATH}activate && \
                         python3 jobs/datbase/insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
                     """
                 }
