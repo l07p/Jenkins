@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import sql
 
-def insert_bank_data(bank_name, bank_address):
+def insert_bank_data(bank_name, bank_code):
     try:
         # Establish the connection
         conn = psycopg2.connect(
@@ -23,7 +23,7 @@ def insert_bank_data(bank_name, bank_address):
         """)
         
         # Execute the query and fetch the new bank_id
-        cur.execute(insert_query, (bank_name, bank_address))
+        cur.execute(insert_query, (bank_name, bank_code))
         new_bank_id = cur.fetchone()[0]
         
         # Commit the transaction
