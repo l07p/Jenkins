@@ -12,7 +12,15 @@ pipeline {
                 git url: 'https://github.com/l07p/jenkins.git', branch: 'master'
             }
         }
-
+        stage('Check Workspace') {
+            steps {
+                script {
+                    // Print the current directory and list the files
+                    sh "pwd"
+                    sh "ls -la"
+                }
+            }
+        }
         stage('Run Python Script') {
             steps {
                 script {
