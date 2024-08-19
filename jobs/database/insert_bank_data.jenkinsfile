@@ -23,7 +23,7 @@ pipeline {
                     // Run the Python script with the parameters
                     sh """
                     source . venv/bin/activate
-                    python3 insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
+                    python3 jobs/datbase/insert_bank_data.py --bank_name="${bank_name}" --bank_code="${bank_code}"
                     """
                 }
             }
