@@ -2,6 +2,7 @@ import psycopg2
 from psycopg2 import sql
 
 def insert_bank_data(bank_name, bank_code):
+    print(f"Inserting bank_name: {bank_name}, bank_code: {bank_code}")  # Debugging print
     try:
         # Establish the connection
         conn = psycopg2.connect(
