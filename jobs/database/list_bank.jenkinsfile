@@ -27,7 +27,7 @@ pipeline {
                     // Run the Python script with the parameters
                     sh """
                         . ${VENV_PATH}activate && \
-                        python3 jobs/database/list_bank.py
+                        python3 jobs/database/list_banks.py
                     """
                 }
             }
