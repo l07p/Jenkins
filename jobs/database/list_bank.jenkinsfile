@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    environment {
+        VENV_PATH = '/opt/venv/bin/'  // Path to the virtual environment in your Docker container
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clone the Git repository
+                git url: 'https://github.com/l07p/jenkins.git', branch: 'master'
+            }
+        }
+        stage('Check Workspace') {
+            steps {
+                script {
+                    // Print the current directory and list the files
+                    sh "pwd"
+                    sh "ls -la"
+                }
+            }
+        }
+        stage('Run Python Script') {
+            steps {
+                script {
+                    // Run the Python script with the parameters
+                    sh """
+                        . ${VENV_PATH}activate && \
+                        python3 jobs/database/list_bank.py
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up at finishing...'
+            cleanWs()  // Clean up workspace after job is done
+        }
+    }
+}
