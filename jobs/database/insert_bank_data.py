@@ -43,4 +43,4 @@ def insert_bank_data(bank_name, bank_code):
         conn.close()
 
 # Example usage
-insert_bank_data("Cash as Bank", "BAR100MIL")
+# insert_bank_data("Cash as Bank", "BAR100MIL")
