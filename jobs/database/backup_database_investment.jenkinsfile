@@ -20,7 +20,7 @@ pipeline {
                 script {
                     // Construct the backup file name separately
                     def date = sh(script: "date +'%Y%m%d%H%M%S'", returnStdout: true).trim()
-                    def backupFile = "${BACKUP_DIR}/backup_${date}.sql"
+                    def backupFile = "${BACKUP_DIR}/investment_backup_${date}.sql"
 
                     // Run the pg_dump command
                     sh """
