@@ -1,0 +1,51 @@
+/*
+This job call pg_pump from jenkins, makes backup of PostgreSQL database investment remotely.
+It removes backup files older than 5 weeks.
+*/
+pipeline {
+    
+    agent any
+    
+    environment {
+        POSTGRES_USER = 'postgres'
+        POSTGRES_PASSWORD = 'root'
+        POSTGRES_HOST = '192.168.178.79'
+        POSTGRES_DB = 'investment'
+        BACKUP_DIR = '/var/jenkins_home/backup'
+    }
+    
+    stages {
+         stage('Database Backup') {
+            steps {
+                script {
+                    // Construct the backup file name separately
+                    def date = sh(script: "date +'%Y%m%d%H%M%S'", returnStdout: true).trim()
+                    def backupFile = "${BACKUP_DIR}/backup_${date}.sql"
+
+                    // Run the pg_dump command
+                    sh """
+                        PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -h ${POSTGRES_HOST} -U ${POSTGRES_USER} -d ${POSTGRES_DB} > ${backupFile}
+                    """
+                }
+            }
+        }
+        
+        stage('Cleanup Old Backups') {
+            steps {
+                script {
+                    // Remove backup files older than 5 weeks (35 days)
+                    sh "find ${BACKUP_DIR} -name 'backup_*.sql' -type f -mtime +35 -exec rm {} \\;"
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Backup completed successfully!'
+        }
+        failure {
+            echo 'Backup failed!'
+        }
+    }
+}
