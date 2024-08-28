@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'BANK_ID', defaultValue: '3', description: 'ID of the bank')
+        string(name: 'ACCOUNT_NUMBER', defaultValue: '480266', description: 'Account number')
+        string(name: 'ACCOUNT_NAME', defaultValue: 'cmdrgiro', description: 'Name of the account')
+        string(name: 'ACCOUNT_TYPE_ID', defaultValue: '2', description: 'Type ID of the account')
+    }
+
+    environment {
+        // Define your environment variables if needed
+        BACKUP_DIR = '/var/jenkins_home/backup'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your repository
+                git 'https://github.com/l07p/Python.git'
+            }
+        }
+
+        stage('Set Up Python Environment') {
+            steps {
+                // Activate the virtual environment and install dependencies if not already done
+                sh '''
+                . /opt/venv/bin/activate
+                pip install --upgrade pip
+                '''
+            }
+        }
+
+        stage('Run Python Script') {
+            steps {
+                script {
+
+                    // Run the Python script
+                    sh '''
+                    . /opt/venv/bin/activate
+                    /opt/venv/bin/python3 investment/src/insert_account.py ${BANK_ID} ${ACCOUNT_NUMBER} ${ACCOUNT_NAME} ${ACCOUNT_TYPE_ID}
+                    '''
+                }
+            }
+        }
+    }
+}
